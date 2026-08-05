@@ -11,7 +11,6 @@ export default class Ani {
   public neverSkipFrame = false;
   private startTime = -1;
   private framesRan: number[] = [];
-  private lastFrameIndex: number = -1;
 
   /* Playback methods */
   start() {
