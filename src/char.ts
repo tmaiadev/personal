@@ -26,10 +26,11 @@ export default class Char {
 
   fadeOut(durationMs = 1000) {
     const lightness = this.lightness;
+
+    this.fadeOutAni = new Ani();
     this.fadeOutAni.ease(durationMs, t => {
       this.lightness = lightness - (t * lightness);
     });
-
     this.fadeOutAni.start();
   }
 

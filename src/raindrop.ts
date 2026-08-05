@@ -25,8 +25,10 @@ export default class Raindrop {
   }
 
   drop() {
-    this.rainDropAni.fps = Math.random() * 96 + 24;
+    this.rainDropAni = new Ani();
+    this.rainDropAni.fps = 24;
     this.rainDropAni.neverSkipFrame = true;
+    this.rainDropAni.loop = true;
 
     for (let i = 0; i < this.chars.length; i++) {
       this.rainDropAni.frames.push(() => {
@@ -40,8 +42,8 @@ export default class Raindrop {
   }
 
   update() {
-    this.chars.forEach(char => char.update());
     this.rainDropAni.update();
+    this.chars.forEach(char => char.update());
   }
 
   draw() {

@@ -16,6 +16,8 @@ export default class Ani {
   start() {
     this.started = true;
     this.paused = false;
+    this.ended = false;
+    this.framesRan = [];
     this.startTime = Date.now();
   }
 
@@ -56,26 +58,29 @@ export default class Ani {
 
     if (frameIndex >= this.frames.length) {
       if (this.loop) {
-        const totalDur = this.frames.length * frameDurMs;
-        const overtime = elapsedTime - totalDur;
-        this.startTime = Date.now() - overtime;
-        frameIndex = Math.floor(overtime / frameDurMs);
+        if (this.neverSkipFrame) {
+          this.startTime = Date.now();
+          frameIndex = 0;
+        } else {
+          const totalDur = this.frames.length * frameDurMs;
+          const overtime = elapsedTime - totalDur;
+          this.startTime = Date.now() - overtime;
+          frameIndex = Math.floor(overtime / frameDurMs);
+        }
         this.framesRan = [];
       } else {
         this.ended = true;
         this.paused = true;
-        return;
       }
     }
 
     const frame = this.frames[frameIndex];
-    if (!frame) return;
 
     if (this.runFrameOnce) {
       const hasNotRan = this.framesRan.indexOf(frameIndex) === -1;
       if (hasNotRan) {
         this.framesRan.push(frameIndex);
-        frame(frameIndex);
+        frame?.(frameIndex);
       }
     } else if (this.neverSkipFrame) {
       for (let i = 0; i <= frameIndex; i++) {
@@ -86,7 +91,7 @@ export default class Ani {
         }
       }
     } else {
-      frame(frameIndex);
+      frame?.(frameIndex);
     }
   }
 }
