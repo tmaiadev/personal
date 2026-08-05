@@ -1,8 +1,7 @@
 import e from "./engine";
-import Raindrop from "./raindrop";
+import Rain from "./rain";
 
-const raindrop = new Raindrop(e.width / 2);
-raindrop.drop();
+const raindrop = new Rain();
 
 e.update(function () {
   raindrop.update();

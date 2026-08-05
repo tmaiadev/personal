@@ -2,14 +2,15 @@ import e from "./engine";
 import Char from "./char";
 import Ani from "./ani";
 
-export default class Raindrop {
+export default class RainDrop {
   private x: number = 0;
   private size: number = 16;
   private chars: Char[] = [];
   private rainDropAni = new Ani();
 
-  constructor(x: number) {
+  constructor(x: number, size = 16) {
     this.x = x;
+    this.size = size;
 
     const nChars = Math.ceil(e.height / this.size);
     for (let i = 0; i < nChars; i++) {
@@ -24,9 +25,9 @@ export default class Raindrop {
     }
   }
 
-  drop() {
+  drop(durationMs = 1000) {
     this.rainDropAni = new Ani();
-    this.rainDropAni.fps = 24;
+    this.rainDropAni.fps = (1000 / durationMs) * this.chars.length;
     this.rainDropAni.neverSkipFrame = true;
     this.rainDropAni.loop = true;
 
