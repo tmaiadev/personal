@@ -7,8 +7,8 @@ export default class Char {
   public x = 0;
   public y = 0;
   public lightness = 0;
-  private fadeOutAni = new Ani();
-  private randomCharRotationAni = new Ani();
+  public fadeOutAni = new Ani();
+  public randomCharRotationAni = new Ani();
 
   constructor(char?: string, size = 16, x = 0, y = 0, lightness = 0) {
     this.char = char || this.randomChar();

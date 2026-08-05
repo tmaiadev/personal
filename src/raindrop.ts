@@ -1,6 +1,7 @@
 import e from "./engine";
 import Char from "./char";
 import Ani from "./ani";
+import layout from "./layout";
 
 export default class RainDrop {
   private x: number = 0;
@@ -35,7 +36,14 @@ export default class RainDrop {
       this.rainDropAni.frames.push(() => {
         const char = this.chars[i];
         char.lightness = 90;
-        char.fadeOut(1000);
+        const writing = layout.getWriting(char.x / char.size, char.y / char.size)?.trim();
+        if (writing) {
+          this.rainDropAni.loop = false;
+          char.char = writing;
+          char.randomCharRotationAni.stop();
+        } else {
+          char.fadeOut(1000);
+        }
       });
     }
 
