@@ -1,0 +1,17 @@
+---
+import NavItem from "./nav-item.astro";
+---
+
+<nav class="sticky top-2 mx-auto w-min print:hidden">
+  <ul
+    class="flex gap-1 rounded-full border border-stone-100 bg-[rgba(255,255,255,.9)] p-1 shadow-md backdrop-blur-md"
+  >
+    <NavItem href="#about">About</NavItem>
+    <NavItem href="#exp">
+      <span class="md:hidden">Exp</span>
+      <span class="hidden md:inline">Experience</span>
+    </NavItem>
+    <NavItem href="#projects">Projects</NavItem>
+    <NavItem href="#contact">Contact</NavItem>
+  </ul>
+</nav>

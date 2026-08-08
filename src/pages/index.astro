@@ -1,17 +1,21 @@
 ---
-import '../styles/global.css';
+import Layout from "../components/layout.astro";
+import Nav from "./nav.astro";
+import ExpSection from "./exp-section.astro";
 ---
 
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <title>Thalles Maia - Software Engineer</title>
-    </head>
-    <body>
-        <h1 class="text-3xl font-bold text-blue-600">Astro</h1>
-    </body>
-</html>
+<Layout>
+  <Nav />
+  <div class="mt-4">
+    <h1 class="text-lg font-bold text-stone-400">Thalles Maia</h1>
+    <p class="text-6xl font-extrabold">Software Engineer</p>
+  </div>
+  <section id="about" class="max-w-[60ch]">
+    <h2 class="sr-only">About</h2>
+    I’ve been working in software development since 2008. I started out building websites
+    for small companies in Brazil, and now working on large-scale systems in London.
+    Whether the project is big or small, my goal is always the same: to build web
+    experiences that are fast, accessible, and genuinely enjoyable for people to use.
+  </section>
+  <ExpSection />
+</Layout>

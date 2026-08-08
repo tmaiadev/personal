@@ -1,0 +1,105 @@
+---
+import ExpItem from "./exp-item.astro";
+
+const exps = [
+  {
+    coName: "Booking.com",
+    href: "https://booking.com",
+    img: "exp_bookingcom.jpg",
+    location: "London, UK",
+    title: "Senior Software Engineer",
+    dtFrom: new Date("2022-08-01"),
+    dtUntil: undefined,
+  },
+  {
+    coName: "Bally's Interactive",
+    href: "https://www.ballys.com/Our-Brands/ballys-interactive-international/default.aspx",
+    img: "exp_ballys.jpg",
+    location: "London, UK",
+    title: "Senior Front-End Engineer",
+    dtFrom: new Date("2019-08-01"),
+    dtUntil: new Date("2022-08-01"),
+  },
+  {
+    coName: "Minu",
+    href: "https://www.minu.co/",
+    img: "exp_minu.jpg",
+    location: "Belo Horizonte, MG, Brazil",
+    title: "Front-End Developer",
+    dtFrom: new Date("2018-11-01"),
+    dtUntil: new Date("2019-05-01"),
+  },
+  {
+    coName: "JMV Technology",
+    href: "https://jmvtechnology.com/en",
+    img: "exp_jmv.jpg",
+    location: "Divinópolis, MG, Brazil",
+    title: "Full-Stack Developer",
+    dtFrom: new Date("2012-11-01"),
+    dtUntil: new Date("2018-11-01"),
+  },
+  {
+    coName: "MB Soluções Digitais",
+    href: "https://mbsolucoesdigitais.com/",
+    img: "exp_mbsd.jpg",
+    location: "Sāo Gonçalo do Pará, MG, Brazil",
+    title: "Web Developer",
+    dtFrom: new Date("2008-06-01"),
+    dtUntil: new Date("2012-10-01"),
+  },
+];
+---
+
+<section id="exp" class="box-border">
+  <h2 class="mb-2 text-4xl font-extrabold">Experience</h2>
+  <div id="exp-wrapper" class="-mx-8 scrollbar-none overflow-x-auto">
+    <ul id="exp-content" class="flex shrink-0 list-none flex-row gap-8 p-8">
+      {
+        exps.map((exp) => (
+          <ExpItem
+            href={exp.href}
+            title={exp.title}
+            img={exp.img}
+            location={exp.location}
+            coName={exp.coName}
+            dtFrom={exp.dtFrom}
+            dtUntil={exp.dtUntil}
+          />
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  #exp-wrapper {
+    --offset: 0px;
+    margin-left: calc(var(--offset) * -1);
+    margin-right: calc(var(--offset) * -1);
+
+    #exp-content {
+      &::before,
+      &::after {
+        content: " ";
+        opacity: 0;
+        pointer-events: none;
+        margin-left: -32px;
+        margin-right: -32px;
+        min-width: var(--offset);
+      }
+    }
+  }
+</style>
+
+<script>
+  const main = document.querySelector("main") as HTMLDivElement;
+  const wrapper = document.getElementById("exp-wrapper") as HTMLDivElement;
+
+  function renderSectionFullWidth() {
+    const offset = main.offsetLeft + 32;
+    wrapper.style = `--offset: ${offset}px;`;
+  }
+
+  renderSectionFullWidth();
+  window.addEventListener("resize", renderSectionFullWidth);
+</script>

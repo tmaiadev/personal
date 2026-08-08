@@ -1,0 +1,79 @@
+---
+function getFormattedDuration(from: Date, until?: Date): string {
+  const monthNames = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  const formatMonthYear = (date: Date) =>
+    `${monthNames[date.getMonth()]} ${date.getFullYear()}`;
+
+  const startDateStr = formatMonthYear(from);
+  const endDateStr = until ? formatMonthYear(until) : "Present";
+
+  const endDate = until || new Date();
+
+  const totalMonths =
+    (endDate.getFullYear() - from.getFullYear()) * 12 +
+    (endDate.getMonth() - from.getMonth()) +
+    1;
+
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
+
+  const durationParts: string[] = [];
+
+  if (years > 0) {
+    durationParts.push(years === 1 ? "1 yr" : `${years} yrs`);
+  }
+
+  if (months > 0 || years === 0) {
+    durationParts.push(months === 1 ? "1 mo" : `${months} mos`);
+  }
+
+  const durationStr = durationParts.join(" ");
+
+  return `${startDateStr} – ${endDateStr} (${durationStr})`;
+}
+
+interface Props {
+  coName: string;
+  href: string;
+  img: string;
+  location: string;
+  title: string;
+  dtFrom: Date;
+  dtUntil?: Date;
+}
+
+const { href, coName, img, title, location, dtFrom, dtUntil } = Astro.props;
+---
+
+<li class="py-2 odd:[&_img]:rotate-3">
+  <div class="flex w-75 flex-col">
+    <div>
+      <img
+        src={img}
+        class="mb-4 block aspect-square w-75 -rotate-3 rounded-4xl border border-stone-300 bg-stone-200"
+      />
+    </div>
+    <div class="text-sm font-extrabold text-stone-600">
+      {location}
+    </div>
+    <div class="text-sm text-stone-600">
+      {getFormattedDuration(dtFrom, dtUntil)}
+    </div>
+    <div class="text-2xl font-extrabold">{title}</div>
+    <a href={href} target="_blank" class="text-nowrap underline">{coName}</a>
+  </div>
+</li>
