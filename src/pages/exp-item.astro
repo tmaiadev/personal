@@ -1,5 +1,23 @@
 ---
-function getFormattedDuration(from: Date, until?: Date): string {
+interface Props {
+  coName: string;
+  href: string;
+  img: string;
+  location: string;
+  title: string;
+  themeColor: string;
+  dtFrom: Date;
+  dtUntil?: Date;
+}
+
+const { href, coName, img, title, themeColor, location, dtFrom, dtUntil } =
+  Astro.props;
+
+function getFormattedDate(date?: Date) {
+  if (!date) {
+    return "Present";
+  }
+
   const monthNames = [
     "Jan",
     "Feb",
@@ -15,65 +33,90 @@ function getFormattedDuration(from: Date, until?: Date): string {
     "Dec",
   ];
 
-  const formatMonthYear = (date: Date) =>
-    `${monthNames[date.getMonth()]} ${date.getFullYear()}`;
-
-  const startDateStr = formatMonthYear(from);
-  const endDateStr = until ? formatMonthYear(until) : "Present";
-
-  const endDate = until || new Date();
-
-  const totalMonths =
-    (endDate.getFullYear() - from.getFullYear()) * 12 +
-    (endDate.getMonth() - from.getMonth()) +
-    1;
-
-  const years = Math.floor(totalMonths / 12);
-  const months = totalMonths % 12;
-
-  const durationParts: string[] = [];
-
-  if (years > 0) {
-    durationParts.push(years === 1 ? "1 yr" : `${years} yrs`);
-  }
-
-  if (months > 0 || years === 0) {
-    durationParts.push(months === 1 ? "1 mo" : `${months} mos`);
-  }
-
-  const durationStr = durationParts.join(" ");
-
-  return `${startDateStr} – ${endDateStr} (${durationStr})`;
+  return `${monthNames[date.getMonth()]} ${date.getFullYear()}`;
 }
-
-interface Props {
-  coName: string;
-  href: string;
-  img: string;
-  location: string;
-  title: string;
-  dtFrom: Date;
-  dtUntil?: Date;
-}
-
-const { href, coName, img, title, location, dtFrom, dtUntil } = Astro.props;
 ---
 
-<li class="py-2 odd:[&_img]:rotate-3">
+<li
+  style={`--theme-color: ${themeColor}`}
+  class="py-2 odd:[&_img]:rotate-3 focus-within:[&_img]:scale-[1] focus-within:[&_img]:rotate-0 focus-within:[&_img]:opacity-100 focus-within:[&_img]:shadow-lg focus-within:[&_img]:grayscale-0 hover:[&_img]:scale-[1] hover:[&_img]:rotate-0 hover:[&_img]:opacity-100 hover:[&_img]:shadow-lg"
+>
   <div class="flex w-75 flex-col">
     <div>
       <img
         src={img}
-        class="mb-4 block aspect-square w-75 -rotate-3 rounded-4xl border border-stone-300 bg-stone-200"
+        class="mb-4 block aspect-square w-75 scale-[0.95] -rotate-3 rounded-4xl border border-stone-300 bg-stone-200 opacity-90 grayscale-30 transition-all duration-500"
       />
     </div>
     <div class="text-sm font-extrabold text-stone-600">
       {location}
     </div>
     <div class="text-sm text-stone-600">
-      {getFormattedDuration(dtFrom, dtUntil)}
+      {getFormattedDate(dtFrom)} - {getFormattedDate(dtUntil)}
+      &nbsp;
+      <exp-item-duration
+        from={dtFrom.toString()}
+        to={dtUntil ? dtUntil.toString() : new Date().toString()}
+      ></exp-item-duration>
     </div>
-    <div class="text-2xl font-extrabold">{title}</div>
-    <a href={href} target="_blank" class="text-nowrap underline">{coName}</a>
+    <div class="text-2xl font-extrabold text-nowrap">{title}</div>
+    <a
+      href={href}
+      target="_blank"
+      class="mt-2 flex items-center gap-1 text-nowrap text-(--theme-color) underline"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="size-4"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+        ></path>
+      </svg>
+      {coName}
+    </a>
   </div>
 </li>
+
+<script>
+  class ExpItemDuration extends HTMLElement {
+    private from = new Date(this.getAttribute("from") || "");
+    private to = new Date(this.getAttribute("to") || "");
+
+    constructor() {
+      super();
+
+      this.innerHTML = `(${this.formattedOutput()})`;
+    }
+
+    private formattedOutput() {
+      const totalMonths =
+        (this.to.getFullYear() - this.from.getFullYear()) * 12 +
+        (this.to.getMonth() - this.from.getMonth()) +
+        1;
+
+      const years = Math.floor(totalMonths / 12);
+      const months = totalMonths % 12;
+      const durationParts: string[] = [];
+
+      if (years > 0) {
+        durationParts.push(years === 1 ? "1 yr" : `${years} yrs`);
+      }
+
+      if (months > 0 || years === 0) {
+        durationParts.push(months === 1 ? "1 mo" : `${months} mos`);
+      }
+
+      return durationParts.join(" ");
+    }
+  }
+
+  customElements.define("exp-item-duration", ExpItemDuration);
+</script>

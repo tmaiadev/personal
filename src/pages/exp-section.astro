@@ -8,6 +8,7 @@ const exps = [
     img: "exp_bookingcom.svg",
     location: "London, UK",
     title: "Senior Software Engineer",
+    themeColor: "#0A3B7D",
     dtFrom: new Date("2022-08-01"),
     dtUntil: undefined,
   },
@@ -17,6 +18,7 @@ const exps = [
     img: "exp_ballys.svg",
     location: "London, UK",
     title: "Senior Front-End Engineer",
+    themeColor: "#EE0000",
     dtFrom: new Date("2019-08-01"),
     dtUntil: new Date("2022-08-01"),
   },
@@ -26,6 +28,7 @@ const exps = [
     img: "exp_minu.svg",
     location: "Belo Horizonte, MG, Brazil",
     title: "Front-End Developer",
+    themeColor: "#0B3A34",
     dtFrom: new Date("2018-11-01"),
     dtUntil: new Date("2019-05-01"),
   },
@@ -35,6 +38,7 @@ const exps = [
     img: "exp_jmv.svg",
     location: "Divinópolis, MG, Brazil",
     title: "Full-Stack Developer",
+    themeColor: "#4D8FD6",
     dtFrom: new Date("2012-11-01"),
     dtUntil: new Date("2018-11-01"),
   },
@@ -44,6 +48,7 @@ const exps = [
     img: "exp_mbsd.svg",
     location: "Sāo Gonçalo do Pará, MG, Brazil",
     title: "Web Developer",
+    themeColor: "#01A85A",
     dtFrom: new Date("2008-06-01"),
     dtUntil: new Date("2012-10-01"),
   },
@@ -59,6 +64,7 @@ const exps = [
           <ExpItem
             href={exp.href}
             title={exp.title}
+            themeColor={exp.themeColor || ""}
             img={exp.img}
             location={exp.location}
             coName={exp.coName}
@@ -94,6 +100,7 @@ const exps = [
 <script>
   const main = document.querySelector("main") as HTMLDivElement;
   const wrapper = document.getElementById("exp-wrapper") as HTMLDivElement;
+  const content = document.getElementById("exp-content") as HTMLDivElement;
 
   function renderSectionFullWidth() {
     const offset = main.offsetLeft + 32;
