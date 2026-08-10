@@ -1,0 +1,44 @@
+---
+interface Props {
+  description: string;
+  href: string;
+  img: string;
+  name: string;
+  sourceCode: string;
+  themeColor: string;
+}
+
+const { description, href, img, name, sourceCode, themeColor } = Astro.props;
+---
+
+<li class="flex gap-2 md:gap-4" style={`--theme-color: ${themeColor}`}>
+  <div class="flex w-25 shrink-0 items-center">
+    <img
+      src={img}
+      class="block aspect-square w-full rounded-2xl border border-stone-300 bg-(--theme-color)"
+      alt={name}
+    />
+  </div>
+  <div class="grow">
+    <div class="text-xl font-extrabold">{name}</div>
+    <p class="line-clamp-3 text-sm text-stone-600">{description}</p>
+  </div>
+  <div class="flex items-center">
+    <a
+      href={href}
+      target="_blank"
+      class="rounded-full border bg-sky-500 px-2 py-1 text-sm text-white text-shadow-2xs"
+    >
+      Open
+    </a>
+  </div>
+  <div class="hidden items-center md:flex">
+    <a
+      href={sourceCode}
+      target="_blank"
+      class="rounded-full border border-sky-500 px-2 py-1 text-sm text-nowrap text-sky-500 text-shadow-2xs"
+    >
+      Source Code
+    </a>
+  </div>
+</li>

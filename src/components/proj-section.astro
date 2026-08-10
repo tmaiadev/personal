@@ -1,0 +1,42 @@
+---
+import ProjItem from "./proj-item.astro";
+
+const projects = [
+  {
+    description:
+      "Organize gift exchanges with ease. Create events, invite friends, and let us handle the matching.",
+    href: "https://secret-santa.thallesmaia.com/",
+    img: "proj_secretsanta.svg",
+    name: "Secret Santa",
+    sourceCode: "https://github.com/tmaiadev/secret-santa/",
+    themeColor: "#14532d",
+  },
+  {
+    description:
+      "Discover, search, and subscribe to podcasts across every genre — from true crime and comedy to news, science, and history — with personalized subscriptions and listening history.",
+    href: "https://podcastplayer.app/",
+    img: "proj_podcastplayer.svg",
+    name: "Podcast Player",
+    sourceCode: "https://github.com/tmaiadev/podcastplayer",
+    themeColor: "#7C3AED",
+  },
+];
+---
+
+<section id="projects">
+  <h2 class="mb-8 text-4xl font-extrabold">Projects</h2>
+  <ul class="flex flex-col gap-8">
+    {
+      projects.map((project) => (
+        <ProjItem
+          description={project.description}
+          href={project.href}
+          img={project.img}
+          name={project.name}
+          sourceCode={project.sourceCode}
+          themeColor={project.themeColor}
+        />
+      ))
+    }
+  </ul>
+</section>

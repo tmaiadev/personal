@@ -2,6 +2,7 @@
 import Layout from "../components/layout.astro";
 import Nav from "../components/nav.astro";
 import ExpSection from "../components/exp-section.astro";
+import ProjSection from "../components/proj-section.astro";
 ---
 
 <Layout>
@@ -18,19 +19,5 @@ import ExpSection from "../components/exp-section.astro";
     experiences that are fast, accessible, and genuinely enjoyable for people to use.
   </section>
   <ExpSection />
-  <section id="projects">
-    <h2 class="mb-2 text-4xl font-extrabold">Projects</h2>
-    <ul>
-      <li>
-        <div class="text-xl font-extrabold">Secret Santa</div>
-        <p class="text-sm text-stone-600">
-          Organize gift exchanges with ease. Create events, invite friends, and
-          let us handle the matching.
-        </p>
-        <a href="https://secret-santa.thallesmaia.com/" target="_blank">
-          Open
-        </a>
-      </li>
-    </ul>
-  </section>
+  <ProjSection />
 </Layout>
