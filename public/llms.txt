@@ -19,7 +19,7 @@ web experiences that are fast, accessible, and genuinely enjoyable for people to
 
 ## Projects
 
-- Secret Santa (https://secretsanta.thallesmaia.com/): Organize gift exchanges — create events, invite friends, automatic matching.
+- Secret Santa (https://secret-santa.thallesmaia.com/): Organize gift exchanges — create events, invite friends, automatic matching.
 - Podcastplayer.app (https://podcastplayer.app/en): A personal podcast player for discovering and listening to podcasts.
 
 ## Links

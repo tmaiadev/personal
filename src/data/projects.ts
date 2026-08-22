@@ -7,7 +7,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     name: 'Secret Santa',
-    url: 'https://secretsanta.thallesmaia.com/',
+    url: 'https://secret-santa.thallesmaia.com/',
     description:
       'Organize gift exchanges with ease. Create events, invite friends, and let us handle the matching.',
   },
