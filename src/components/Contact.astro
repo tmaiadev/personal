@@ -1,0 +1,63 @@
+---
+import { site } from '../data/site';
+import { socials, revealable } from '../data/contact';
+
+const revealClass =
+  'inline-flex items-center gap-1.5 rounded-full border border-line bg-surface px-3 py-1 text-sm text-accent transition-colors hover:border-accent-soft hover:bg-accent-soft/20';
+---
+
+<section aria-labelledby="contact-heading" class="reveal">
+  <h2 id="contact-heading" class="text-sm font-semibold tracking-widest text-muted uppercase">
+    Contact
+  </h2>
+
+  <p class="mt-6 max-w-prose text-muted">{site.contactBlurb}</p>
+
+  <ul class="mt-5 flex flex-col gap-3 text-sm">
+    {
+      socials.map((s) => (
+        <li class="flex flex-wrap items-baseline gap-x-2">
+          <span class="w-20 shrink-0 text-muted">{s.label}</span>
+          <a href={s.url} target="_blank" rel="me noopener" class="hover:text-accent">
+            {s.handle}
+          </a>
+        </li>
+      ))
+    }
+
+    <li class="flex flex-wrap items-baseline gap-x-2">
+      <span class="w-20 shrink-0 text-muted">Email</span>
+      <button
+        type="button"
+        class={revealClass}
+        data-reveal="email"
+        data-value={revealable.email}
+        data-display={revealable.email}
+        aria-label="Reveal email address"
+      >
+        <span aria-hidden="true">✉</span> Show email
+      </button>
+    </li>
+
+    <li class="flex flex-wrap items-baseline gap-x-2">
+      <span class="w-20 shrink-0 text-muted">Phone</span>
+      <button
+        type="button"
+        class={revealClass}
+        data-reveal="phone"
+        data-value={revealable.phoneTel}
+        data-display={revealable.phoneDisplay}
+        aria-label="Reveal phone number"
+      >
+        <span aria-hidden="true">☎</span> Show phone
+      </button>
+    </li>
+  </ul>
+
+  <noscript>
+    <p class="mt-4 text-sm text-muted">
+      Email and phone are revealed with JavaScript to deter bots — please reach out via LinkedIn in
+      the meantime.
+    </p>
+  </noscript>
+</section>

@@ -1,0 +1,46 @@
+---
+import { experience } from '../data/experience';
+import { entryDuration, formatMonthYear } from '../lib/duration';
+---
+
+<section aria-labelledby="experience-heading" class="reveal">
+  <h2 id="experience-heading" class="text-sm font-semibold tracking-widest text-muted uppercase">
+    Experience
+  </h2>
+
+  <ol class="mt-6 flex flex-col divide-y divide-line">
+    {
+      experience.map((job) => {
+        const isPresent = job.end === 'present';
+        const period = `${formatMonthYear(job.start)} – ${isPresent ? 'Present' : formatMonthYear(job.end)}`;
+        return (
+          <li class="flex flex-col gap-1 py-5">
+            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <h3 class="text-lg font-medium">
+                {job.url ? (
+                  <a href={job.url} target="_blank" rel="noopener" class="hover:text-accent">
+                    {job.company}
+                  </a>
+                ) : (
+                  job.company
+                )}
+              </h3>
+              <p class="text-sm text-muted">
+                {period}{' '}
+                <span class="whitespace-nowrap text-muted/80">
+                  (
+                  <span data-duration-start={job.start} data-duration-end={job.end}>
+                    {entryDuration(job.start, job.end)}
+                  </span>
+                  )
+                </span>
+              </p>
+            </div>
+            <p class="text-ink">{job.role}</p>
+            <p class="text-sm text-muted">{job.location}</p>
+          </li>
+        );
+      })
+    }
+  </ol>
+</section>

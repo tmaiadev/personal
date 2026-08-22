@@ -1,0 +1,118 @@
+@import 'tailwindcss';
+
+:root {
+  --page: #faf9f6;
+  --surface: #f3f1ec;
+  --ink: #33312e;
+  --muted: #6f6a62;
+  --line: #e4e0d8;
+  --accent: #43698c;
+  --accent-soft: #a9c4dd;
+  --peach: #d99c78;
+  --sage: #8ba888;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #1e1d1b;
+    --surface: #26241f;
+    --ink: #e8e6e1;
+    --muted: #a8a29a;
+    --line: #35322c;
+    --accent: #9dbcd8;
+    --accent-soft: #3a5877;
+    --peach: #e0aa88;
+    --sage: #a3bfa0;
+    color-scheme: dark;
+  }
+}
+
+@theme {
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-peach: var(--peach);
+  --color-sage: var(--sage);
+
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-page);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-accent-soft);
+    color: var(--color-ink);
+  }
+
+  a {
+    color: var(--color-accent);
+    text-underline-offset: 3px;
+    transition:
+      color 0.25s ease-out,
+      opacity 0.25s ease-out;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@layer components {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  [data-motion-ready] .reveal:not(.is-visible) {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+
+  [data-motion-ready] .reveal {
+    transition:
+      opacity 0.5s ease-out,
+      transform 0.5s ease-out;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-motion-ready] .reveal:not(.is-visible) {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}

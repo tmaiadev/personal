@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Experience from '../components/Experience.astro';
+import Projects from '../components/Projects.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout>
+  <a
+    href="#main"
+    class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-10 focus:rounded focus:bg-surface focus:px-3 focus:py-2 focus:text-accent"
+  >
+    Skip to content
+  </a>
+
+  <main id="main" class="mx-auto flex max-w-2xl flex-col gap-16 px-6 py-16 sm:gap-20 sm:py-24">
+    <Hero />
+    <Experience />
+    <Projects />
+    <Contact />
+    <Footer />
+  </main>
+</BaseLayout>

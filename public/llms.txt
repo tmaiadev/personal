@@ -1,0 +1,30 @@
+# Thalles Maia
+
+> Software Developer building accessible, fast, and enjoyable web experiences since 2008 — from Brazil to London.
+
+## About
+
+Thalles Maia has been working in software development since 2008. He started out
+building websites for small companies in Brazil, and now works on large-scale systems
+in London. Whether the project is big or small, his goal is always the same: to build
+web experiences that are fast, accessible, and genuinely enjoyable for people to use.
+
+## Experience
+
+- Senior Software Engineer, Booking.com — London, UK (Aug 2022 – present)
+- Senior Front-end Developer, Bally's Interactive — London, UK (Aug 2019 – Aug 2022)
+- Front-end Developer, Minu — Belo Horizonte, Brazil (Nov 2018 – May 2019)
+- Full-stack Developer, JMV Technology — Divinópolis, Brazil (Nov 2012 – Nov 2018)
+- Full-stack Developer, MB Soluções Digitais — São Gonçalo do Pará, Brazil (Jun 2008 – Oct 2012)
+
+## Projects
+
+- Secret Santa (https://secretsanta.thallesmaia.com/): Organize gift exchanges — create events, invite friends, automatic matching.
+- Podcastplayer.app (https://podcastplayer.app/en): A personal podcast player for discovering and listening to podcasts.
+
+## Links
+
+- Website: https://thallesmaia.com
+- GitHub: https://github.com/tmaiadev
+- LinkedIn: https://www.linkedin.com/in/thallesmaia
+- Instagram: https://www.instagram.com/tmaiadev

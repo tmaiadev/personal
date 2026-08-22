@@ -1,0 +1,8 @@
+---
+import { site } from '../data/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-line pt-6 text-sm text-muted">
+  <p>© <span data-current-year>{year}</span> {site.name}</p>
+</footer>
