@@ -18,7 +18,7 @@ export const experience: ExperienceEntry[] = [
   },
   {
     company: "Bally's Interactive",
-    url: 'https://www.ballysinteractive.com/',
+    url: 'https://www.ballys.com/Our-Brands/ballys-interactive-international/default.aspx',
     role: 'Senior Front-end Developer',
     location: 'London, UK',
     start: '2019-08',
