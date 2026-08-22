@@ -26,7 +26,7 @@ export const experience: ExperienceEntry[] = [
   },
   {
     company: 'Minu',
-    url: 'https://minu.me/',
+    url: 'https://www.minu.co/',
     role: 'Front-end Developer',
     location: 'Belo Horizonte, MG, Brazil',
     start: '2018-11',
