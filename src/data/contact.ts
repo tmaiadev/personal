@@ -11,7 +11,7 @@ export const socials: SocialLink[] = [
 ];
 
 export const revealable = {
-  email: 'dGhhbGxlc2htbWFpYUBnbWFpbC5jb20=',
+  email: 'dG1haWFkZXZAZ21haWwuY29t',
   phoneTel: 'KzQ0NzgzMjE0MjI0NA==',
   phoneDisplay: 'KzQ0IDA3OCAzMjE0IDIyNDQ=',
 };
