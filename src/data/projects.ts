@@ -12,8 +12,8 @@ export const projects: Project[] = [
       'Organize gift exchanges with ease. Create events, invite friends, and let us handle the matching.',
   },
   {
-    name: 'Podcastplayer.app',
-    url: 'https://podcastplayer.app/en',
+    name: 'Podcasts',
+    url: 'https://podcasts.thallesmaia.com',
     description:
       'Your personal podcast player for discovering and listening to your favorite podcasts.',
   },
